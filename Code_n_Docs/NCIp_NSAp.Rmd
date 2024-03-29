@@ -1,0 +1,215 @@
+---
+title: "Untitled"
+author: "Sachin Shubham"
+date: "3/6/2021"
+output:
+  word_document: default
+---
+
+```{r}
+library(ggplot2)
+library(MASS)
+library(tidyverse)
+library(dplyr)
+library(sqldf)
+library(data.table)
+library(ggtext)
+library(gridExtra)
+library(gtable)
+library(cowplot)
+library(grid)
+library(egg)
+library(e1071)
+
+setwd("D:\\COSC_6323_Statistics_for_Researchers\\Project")
+dataFromCSV<-read.csv("ArticleLevel-RegData-ALLSA_Xc_1_NData_655386_LONGXCIP2.csv", stringsAsFactors = FALSE)
+
+dataFromCSV<-read.csv(file.choose())
+
+
+fd<-dataFromCSV %>%
+  group_by(Yp, NSAp, Zp>0) %>%
+  summarise(
+    cnt = n()
+  ) %>%
+  filter(
+    Yp>1979
+  )
+
+fd
+yrcnt = NULL
+years = 1980:2018
+
+for (i in 1:length(years)){
+  hht <- filter(fd, Yp==i+1979)
+  yrcnt[i] <- ( sum(hht[4]))
+}
+
+############################################
+# FIGURE 2A - 3rd Graph SA & CIP Categories
+############################################
+
+# Specify years and categories to analyze
+years <- 1980:2018
+cats <- 1:4
+
+SA_CIP1 <- dataFromCSV %>%
+  group_by(Yp, NSAp, NCIPp, Zp>0) %>%
+  summarise(
+    cnt = n()
+  ) %>%
+  filter((NCIPp == 1 |
+           NSAp == 1) & Yp>1979)
+
+
+SA_CIP2 <- dataFromCSV %>%
+  group_by(Yp, NSAp, NCIPp, Zp>0) %>%
+  summarise(
+    cnt = n()
+  ) %>%
+  filter(NCIPp == 2 &
+           NSAp == 2 &
+           Yp>1979)
+
+SA_CIP3 <- dataFromCSV %>%
+  group_by(Yp, NSAp, NCIPp, Zp>0) %>%
+  summarise(
+    cnt = n()
+  ) %>%
+  filter(NCIPp == 3 &
+           NSAp == 3 &
+           Yp>1979)
+
+SA_CIP4 <- dataFromCSV %>%
+  group_by(Yp, NSAp, NCIPp, Zp>0) %>%
+  summarise(
+    cnt = n()
+  ) %>%
+  filter(NCIPp == 4 &
+           NSAp == 4 &
+           Yp>1979)
+
+
+SA_CIP <- SA_CIP1 %>% full_join(SA_CIP2, by = NULL) %>% full_join(SA_CIP3, by = NULL) %>% full_join(SA_CIP4, by = NULL)
+
+
+# Create matrix to store SA_CIP papers in specified categories by years
+yrSA_CIPcatNEG1 <- tibble(Yp = 0, NSAp=0, NCIPp=0, `Zp > 0`=FALSE, cnt= 0)
+yrSA_CIPcatPOS1 <- tibble(Yp = 0, NSAp=0, NCIPp=0, `Zp > 0`=TRUE,  cnt= 0)
+yrSA_CIPcatNEG2 <- tibble(Yp = 0, NSAp=0, NCIPp=0, `Zp > 0`=FALSE, cnt= 0)
+yrSA_CIPcatPOS2 <- tibble(Yp = 0, NSAp=0, NCIPp=0, `Zp > 0`=TRUE,  cnt= 0)
+yrSA_CIPcatNEG3 <- tibble(Yp = 0, NSAp=0, NCIPp=0, `Zp > 0`=FALSE, cnt= 0)
+yrSA_CIPcatPOS3 <- tibble(Yp = 0, NSAp=0, NCIPp=0, `Zp > 0`=TRUE,  cnt= 0)
+yrSA_CIPcatNEG4 <- tibble(Yp = 0, NSAp=0, NCIPp=0, `Zp > 0`=FALSE, cnt= 0)
+yrSA_CIPcatPOS4 <- tibble(Yp = 0, NSAp=0, NCIPp=0, `Zp > 0`=TRUE,  cnt= 0)
+
+# Create vectors to store total CIP papers with below average citations in specified categories by years
+yrSA_CIPtotNEG <- matrix(data=NA, nrow = 1, ncol = length(years))
+
+
+# Create vectors to store total CIP papers with above average citations in specified categories by years
+yrSA_CIPtotPOS <- matrix(data=NA, nrow = 1, ncol = length(years))
+
+# tmp1 <- tibble(Yp = as.integer(Yp = zer[1:8]), NCIPp=as.integer(0), 'Zp > 0'=FALSE, cnt= as.integer(0))
+for (i in 1:length(years) ){
+  
+  # Filter SA_CIP of all categories
+  tmp1 <- filter(SA_CIP, Yp == (i+1979) )
+  
+  yrSA_CIPcatNEG1 <- yrSA_CIPcatNEG1 %>% full_join(filter(tmp1, (NCIPp == 1 | NSAp == 1) & `Zp > 0` == FALSE))
+  yrSA_CIPcatPOS1 <- yrSA_CIPcatPOS1 %>% full_join(filter(tmp1, (NCIPp == 1 | NSAp == 1) & `Zp > 0` == TRUE))
+    
+  yrSA_CIPcatNEG2 <- yrSA_CIPcatNEG2 %>% full_join(filter(tmp1, (NCIPp == 2 | NSAp == 2) & `Zp > 0` == FALSE))
+  yrSA_CIPcatPOS2 <- yrSA_CIPcatPOS2 %>% full_join(filter(tmp1, (NCIPp == 2 | NSAp == 2) & `Zp > 0` == TRUE))
+    
+  yrSA_CIPcatNEG3 <- yrSA_CIPcatNEG3 %>% full_join(filter(tmp1, (NCIPp == 3 | NSAp == 3) & `Zp > 0` == FALSE))
+  yrSA_CIPcatPOS3 <- yrSA_CIPcatPOS3 %>% full_join(filter(tmp1, (NCIPp == 3 | NSAp == 3) & `Zp > 0` == TRUE))
+    
+  yrSA_CIPcatNEG4 <- yrSA_CIPcatNEG4 %>% full_join(filter(tmp1, (NCIPp == 4 | NSAp == 4) & `Zp > 0` == FALSE))
+  yrSA_CIPcatPOS4 <- yrSA_CIPcatPOS4 %>% full_join(filter(tmp1, (NCIPp == 4 | NSAp == 4) & `Zp > 0` == TRUE))
+    
+#  } 
+
+  
+  yrSA_CIPtotNEG[1,i] <- sum(filter(tmp1, `Zp > 0` == FALSE)[[5]])
+  yrSA_CIPtotPOS[1,i] <- sum(filter(tmp1, `Zp > 0` == TRUE)[[5]])
+  
+}
+
+
+colnames(yrSA_CIPcat) <- c(1980:2018)
+rownames(yrSA_CIPcat) <- c("SA_CIP1 Zp-", "SA_CIP1 Zp+", "SA_CIP2 Zp-", "SA_CIP2 Zp+", "SA_CIP3 Zp-", "SA_CIP3 Zp+", "SA_CIP4 Zp-", "SA_CIP4 Zp+")
+colnames(yrSA_CIPtotNEG) <- paste(1980:2018, "Neg Cite.")
+colnames(yrSA_CIPtotPOS) <- paste(1980:2018, "Pos Cite.")
+
+SA_CIPpercTotNEG <- matrix(data=NA, nrow = length(cats), ncol = length(years))
+SA_CIPpercTotPOS <- matrix(data=NA, nrow = length(cats), ncol = length(years))
+
+for (i in 1:length(years)){
+  
+    SA_CIPpercTotNEG[1,i] <- sum(filter(yrSA_CIPcatNEG1, Yp == i + 1979)[[5]]) / yrSA_CIPtotNEG[1,i]
+    SA_CIPpercTotPOS[1,i] <- sum(filter(yrSA_CIPcatPOS1, Yp == i + 1979)[[5]]) / yrSA_CIPtotPOS[1,i]
+    
+    SA_CIPpercTotNEG[2,i] <- sum(filter(yrSA_CIPcatNEG2, Yp == i + 1979)[[5]]) / yrSA_CIPtotNEG[1,i]
+    SA_CIPpercTotPOS[2,i] <- sum(filter(yrSA_CIPcatPOS2, Yp == i + 1979)[[5]]) / yrSA_CIPtotPOS[1,i]
+    
+    SA_CIPpercTotNEG[3,i] <- sum(filter(yrSA_CIPcatNEG3, Yp == i + 1979)[[5]]) / yrSA_CIPtotNEG[1,i]
+    SA_CIPpercTotPOS[3,i] <- sum(filter(yrSA_CIPcatPOS3, Yp == i + 1979)[[5]]) / yrSA_CIPtotPOS[1,i]
+    
+    SA_CIPpercTotNEG[4,i] <- sum(filter(yrSA_CIPcatNEG4, Yp == i + 1979)[[5]]) / yrSA_CIPtotNEG[1,i]
+    SA_CIPpercTotPOS[4,i] <- sum(filter(yrSA_CIPcatPOS4, Yp == i + 1979)[[5]]) / yrSA_CIPtotPOS[1,i]
+}
+
+colnames(SA_CIPpercTotNEG) <- c(1980:2018)
+colnames(SA_CIPpercTotPOS) <- c(1980:2018)
+
+rownames(SA_CIPpercTotNEG) <- c("SA_CIP1 Zp- %", "SA_CIP2 Zp- %", "SA_CIP3 Zp- %", "SA_CIP4 Zp- %")
+rownames(SA_CIPpercTotPOS) <- c("SA_CIP1 Zp+ %", "SA_CIP2 Zp+ %", "SA_CIP3 Zp+ %", "SA_CIP4 Zp+ %")
+
+
+
+
+years <- 1980:2018
+
+#Plotting for SACIP
+
+scp1 = data.frame(years=years, Fraction = (SA_CIPpercTotPOS[1,]))
+scp2 = data.frame(years=years, Fraction = (SA_CIPpercTotPOS[2,]))
+scp3 = data.frame(years=years, Fraction = SA_CIPpercTotPOS[3,])
+scp4 = data.frame(years=years, Fraction = (SA_CIPpercTotPOS[4,]))
+
+
+scn1 = data.frame(years=years, Fraction = (SA_CIPpercTotNEG[1,]))
+scn2 = data.frame(years=years, Fraction = (SA_CIPpercTotNEG[2,]))
+scn3 = data.frame(years=years, Fraction = SA_CIPpercTotNEG[3,])
+scn4 = data.frame(years=years, Fraction = (SA_CIPpercTotNEG[4,]))
+  
+sce1<-ggplot()+geom_line(data=scp1, mapping = aes(x=years,y=Fraction), size=0.5, color="grey30") + geom_line(data=scp2, mapping = aes(x=years,y=Fraction), size=0.5, color="grey69") +
+  geom_line(data=scp3, mapping = aes(x=years,y=Fraction), size=1, color="royalblue") + geom_line(data=scp4, mapping = aes(x=years,y=Fraction), size=0.5, color="blue") +
+  geom_line(data=scn1, mapping = aes(x=years,y=Fraction), linetype = "dashed", size=0.5, color="grey30") + geom_line(data=scn2, mapping = aes(x=years,y=Fraction), linetype = "dashed", size=0.5, color="grey69") +
+  geom_line(data=scn3, mapping = aes(x=years,y=Fraction), linetype = "dashed", size=0.5, color="royalblue") + geom_line(data=scn4, mapping = aes(x=years,y=Fraction), linetype = "dashed", size=0.5, color="blue")
+
+sce2<-ce1+theme_bw() + theme(panel.border = element_rect(colour = "black", fill=NA, size=1), panel.grid.major = element_blank(),
+                          panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"),
+                          axis.text.x   = element_text(size=10)) 
+sce3<-ce2+scale_x_continuous(limits=c(1980, 2020), breaks=seq(1980, 2020, 5))+scale_y_continuous(limits=c(0.0, 1.0), breaks=seq(0.0, 1.0, 0.2))
+
+
+sce4<-ce3+labs(title = "", x = "", y = "")
+
+
+b=c(0.001, 0.005, 0.010, 0.050, 0.100)
+
+sce5<-sce4 +annotation_custom(
+  ggplotGrob(sce4+annotation_logticks() +
+               scale_y_log10(limits = c(NA,0.1))+scale_x_continuous(limits=c(1980, 2020), breaks=seq(1980, 2020, 10))),
+  xmin = 1983, xmax = 2007, ymin = 0.23, ymax = 0.8)
+
+sce5+theme(legend.title = element_text(size=12, color = "salmon", face="bold"),
+           legend.justification=c(0,1), 
+           legend.position=c(0.05, 0.95),
+           legend.background = element_blank(),
+           legend.key = element_blank()) + 
+  labs(subtitle="Cross-SA&CIP")
+```
+

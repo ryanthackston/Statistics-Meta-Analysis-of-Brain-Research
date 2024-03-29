@@ -1,0 +1,820 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Project - Part 3},
+  pdfauthor={Ryan Thackston},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Project - Part 3}
+\author{Ryan Thackston}
+\date{5/2/2021}
+
+\begin{document}
+\maketitle
+
+\hypertarget{table-s1}{%
+\subsection{Table S1:}\label{table-s1}}
+
+\begin{table}
+
+\caption{\label{tab:S1}Table:S1}
+\centering
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}}
+\toprule
+  & (1) 
+ $X_{SA}$ & (2) 
+ $X_{CIP}$ & (3) 
+ $X_{SA\&CIP}$ & (4) 
+ $X_{SA}$ & (5) 
+ $X_{CIP}$ & (6) 
+ $X_{SA \& CIP}$\\
+\midrule
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}y & 1.0317 *** (0.0007) & 1.0085 *** (0.00110) & 1.0461 *** (0.00160) & 1.0327 *** (0.00085) & 1.0205 *** (0.00150) & 1.0609 *** (0.00210)\\
+\hspace{1em}$\bar{z_j}$ & 0.9975   (0.01185) & 1.2822 *** (0.02100) & 1.415 *** (0.03325) & 0.978 *** (0.01180) & 1.2232 *** (0.02040) & 1.3077 *** (0.03150)\\
+\hspace{1em}ln k & 0.8848 *** (0.0099) & 1.7527 *** (0.02640) & 1.5616 *** (0.03400) & 0.8968 *** (0.01010) & 1.821 *** (0.02765) & 1.6387 *** (0.03610)\\
+\hspace{1em}ln w & 4.6549 *** (0.0788) & 0.9332 *** (0.02255) & 4.858 *** (0.15630) & 4.6775 *** (0.07935) & 0.9292 *** (0.02260) & 4.8956 *** (0.15910)\\
+\hspace{1em}$N_R$ & 1.3243 *** (0.02405) & 7.8101 *** (0.12555) & 12.0039 *** (0.31475) & 1.2108 *** (0.04920) & 3.0284 *** (0.11255) & 4.5694 *** (0.27500)\\
+\hspace{1em}$N_{CIP}$ & 1.3073 *** (0.02305) & NA & NA & 1.2944 *** (0.02295) & NA & NA\\
+\hspace{1em}$N_{SA}$ &  & 1.2158 *** (0.01070) & NA & NA & 1.206 *** (0.01070) & NA\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$I_{2014+}$ &  &  &  & 0.9488 * (0.03800) & 0.754 *** (0.02430) & 0.7163 *** (0.04290)\\
+\hspace{1em}$I_{R_{NA}}$ &  &  &  & 0.9131 *** (0.04340) & 0.38 *** (0.01655) & 0.3974 *** (0.02745)\\
+\hspace{1em}$I_{R_{EU}}$ &  &  &  & 0.9422 * (0.04515) & 0.313 *** (0.01405) & 0.3448 *** (0.02415)\\
+\hspace{1em}$I_{R_{AA}}$ &  &  &  & 0.7463 *** (0.03675) & 0.2295 *** (0.01165) & 0.1914 *** (0.01465)\\
+\hspace{1em}$I_{R_{NA}} \times I_{2014+}$ &  &  &  & 1.0743 ** (0.04955) & 1.0065   (0.04460) & 1.0115   (0.07175)\\
+\hspace{1em}$I_{R_{EU}} \times  I_{2014+}$ &  &  &  & 0.9553   (0.04450) & 1.0384   (0.04935) & 0.9381   (0.06915)\\
+\hspace{1em}$I_{R_{AA}} \times  I_{2014+}$ &  &  &  & 1.1112 *** (0.05735) & 0.8977 ** (0.06070) & 0.9505   (0.08935)\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$\textit{N}$ & 602599 & 602599 & 207281 & 602599 & 602599 & 207281\\
+\hspace{1em}Pseudo $R^2$ & 0.0725262 & 0.194511 & 0.308123 & 0.0734646 & 0.204474 & 0.319105\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{verbatim}
+##                                                  XSA                 XCIP
+## y                                1.0317 *** (0.0007) 1.0085 *** (0.00110)
+## $\\bar{z_j}$                      0.9975   (0.01185) 1.2822 *** (0.02100)
+## ln k                             0.8848 *** (0.0099) 1.7527 *** (0.02640)
+## ln w                             4.6549 *** (0.0788) 0.9332 *** (0.02255)
+## $N_R$                           1.3243 *** (0.02405) 7.8101 *** (0.12555)
+## $N_{CIP}$                       1.3073 *** (0.02305)                 NA  
+## $N_{SA}$                                             1.2158 *** (0.01070)
+## $I_{2014+}$                                                              
+## $I_{R_{NA}}$                                                             
+## $I_{R_{EU}}$                                                             
+## $I_{R_{AA}}$                                                             
+## $I_{R_{NA}} \\times I_{2014+}$                                           
+## $I_{R_{EU}} \\times  I_{2014+}$                                          
+## $I_{R_{AA}} \\times  I_{2014+}$                                          
+## $\\textit{N}$                                 602599               602599
+## Pseudo $R^2$                               0.0725262             0.194511
+##                                              X.XSACIP                XSA.1
+## y                                1.0461 *** (0.00160) 1.0327 *** (0.00085)
+## $\\bar{z_j}$                      1.415 *** (0.03325)  0.978 *** (0.01180)
+## ln k                             1.5616 *** (0.03400) 0.8968 *** (0.01010)
+## ln w                              4.858 *** (0.15630) 4.6775 *** (0.07935)
+## $N_R$                           12.0039 *** (0.31475) 1.2108 *** (0.04920)
+## $N_{CIP}$                                        NA   1.2944 *** (0.02295)
+## $N_{SA}$                                         NA                   NA  
+## $I_{2014+}$                                             0.9488 * (0.03800)
+## $I_{R_{NA}}$                                          0.9131 *** (0.04340)
+## $I_{R_{EU}}$                                            0.9422 * (0.04515)
+## $I_{R_{AA}}$                                          0.7463 *** (0.03675)
+## $I_{R_{NA}} \\times I_{2014+}$                         1.0743 ** (0.04955)
+## $I_{R_{EU}} \\times  I_{2014+}$                         0.9553   (0.04450)
+## $I_{R_{AA}} \\times  I_{2014+}$                       1.1112 *** (0.05735)
+## $\\textit{N}$                                  207281               602599
+## Pseudo $R^2$                                 0.308123            0.0734646
+##                                               XCIP.1              XSA.CIP
+## y                               1.0205 *** (0.00150) 1.0609 *** (0.00210)
+## $\\bar{z_j}$                    1.2232 *** (0.02040) 1.3077 *** (0.03150)
+## ln k                             1.821 *** (0.02765) 1.6387 *** (0.03610)
+## ln w                            0.9292 *** (0.02260) 4.8956 *** (0.15910)
+## $N_R$                           3.0284 *** (0.11255) 4.5694 *** (0.27500)
+## $N_{CIP}$                                       NA                   NA  
+## $N_{SA}$                         1.206 *** (0.01070)                 NA  
+## $I_{2014+}$                      0.754 *** (0.02430) 0.7163 *** (0.04290)
+## $I_{R_{NA}}$                      0.38 *** (0.01655) 0.3974 *** (0.02745)
+## $I_{R_{EU}}$                     0.313 *** (0.01405) 0.3448 *** (0.02415)
+## $I_{R_{AA}}$                    0.2295 *** (0.01165) 0.1914 *** (0.01465)
+## $I_{R_{NA}} \\times I_{2014+}$    1.0065   (0.04460)   1.0115   (0.07175)
+## $I_{R_{EU}} \\times  I_{2014+}$   1.0384   (0.04935)   0.9381   (0.06915)
+## $I_{R_{AA}} \\times  I_{2014+}$  0.8977 ** (0.06070)   0.9505   (0.08935)
+## $\\textit{N}$                                 602599               207281
+## Pseudo $R^2$                                0.204474             0.319105
+\end{verbatim}
+
+Table S1 shows the results of a logistic regression model of the
+cross-domain activity at an article level. This means researchers from
+different backgrounds collaborating (SA) by co-authoring published
+papers in differing categories (CIP). Data was filtered for cross-domain
+activity by the years (Yp) from 1970 to 2018, the number of co-authors
+of a paper (Kp) ≥ 2, and the number Medical Subject Heading (MeSH) words
+≥ 2 to distinguish mono-domain versus cross-domain activity. The
+parameters contribute to the total information of predicting papers that
+have cross domain activity with numbers reported in odds ratios (what
+are the odds of cross-domain activity based on a high value of certain
+parameters). The columns are each separate models that show what
+parameters contribute to SA, CIP, or SACIP in the logistic regressions.
+Robust error estimations were also made which act as confidence
+intervals for the estimated contribution of the parameters. From looking
+at the values, the log number of MeSH words (w) seems to relate more to
+the SA and SACIP. The region the paper was published (NRegp) appears to
+contribute highly to Classification of Instructional Program (CIP) and
+SACIP. This suggests that researchers in certain regions of the world
+historically publish papers ranging from a wide variety of subject
+fields from their own. The pseudo R\^{}2 value also showed that the
+interactions of years papers were published contributed very little to
+the logistic regression model, suggesting that these trends are
+prevalent from the 1970s to 2018 rather than just 2014.
+
+\begin{table}
+
+\caption{\label{tab:S2}Table:S2}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}}
+\toprule
+  & (1) 
+ $\tiny X_{Distant,SA}$ & (2) 
+ $\tiny X_{Distant,CIP}$ & (3) 
+ $\tiny X_{Neibor,SA\&CIP}$ & (4) 
+ $\tiny X_{Distant,SA}$ & (5) 
+ $\tiny X_{Distant,CIP}$ & (6) 
+ $\tiny X_{Distant,SA \& CIP}$\\
+\midrule
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}y & 1.03 *** (0.0008) & 1.0019 ** (0.00130) & 1.0255 *** (0.00210) & 1.0275 *** (0.00095) & 1.0117 *** (0.00175) & 1.0357 *** (0.00280)\\
+\hspace{1em}$\bar{z_j}$ & 1.4876 *** (0.01745) & 1.3439 *** (0.02630) & 1.7655 *** (0.05025) & 1.4278 *** (0.01705) & 1.266 *** (0.02515) & 1.6456 *** (0.04755)\\
+\hspace{1em}ln k & 0.5304 *** (0.0058) & 1.755 *** (0.03110) & 1.132 *** (0.02920) & 0.5432 *** (0.00600) & 1.8324 *** (0.03260) & 1.188 *** (0.03070)\\
+\hspace{1em}ln w & 1.756 *** (0.02865) & 0.8891 *** (0.02570) & 1.8158 *** (0.07365) & 1.7879 *** (0.02930) & 0.8886 *** (0.02575) & 1.7995 *** (0.07290)\\
+\hspace{1em}$N_R$ & 1.7625 *** (0.02645) & 6.2972 *** (0.11395) & 8.4242 *** (0.22290) & 1.8532 *** (0.06005) & 2.6172 *** (0.10510) & 4.0712 *** (0.22645)\\
+\hspace{1em}$N_{CIP}$ & 1.4289 *** (0.01975) &  &  & 1.4154 *** (0.01965) &  & \\
+\hspace{1em}$N_{SA}$ &  & 1.2301 *** (0.01285) &  &  & 1.2154 *** (0.01275) & \\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$I_{2014+}$ &  &  &  & 1.0292   (0.03160) & 0.7704 *** (0.02690) & 0.7949 *** (0.04055)\\
+\hspace{1em}$I_{R_{NA}}$ &  &  &  & 1.1223 *** (0.04335) & 0.4052 *** (0.01970) & 0.5113 *** (0.03520)\\
+\hspace{1em}$I_{R_{EU}}$ &  &  &  & 1.1918 *** (0.04650) & 0.3269 *** (0.01660) & 0.404 *** (0.02965)\\
+\hspace{1em}$I_{R_{AA}}$ &  &  &  & 0.6259 *** (0.02655) & 0.1718 *** (0.01100) & 0.1557 *** (0.01560)\\
+\hspace{1em}$I_{R_{NA}} \times I_{2014+}$ &  &  &  & 1.0528 ** (0.03850) & 1.0398   (0.05420) & 1.0094   (0.07635)\\
+\hspace{1em}$I_{R_{EU}} \times  I_{2014+}$ &  &  &  & 1.0435 * (0.03900) & 1.1137 *** (0.06315) & 1.0349   (0.08885)\\
+\hspace{1em}$I_{R_{AA}} \times  I_{2014+}$ &  &  &  & 1.2744 *** (0.05930) & 1.0806   (0.10095) & 1.2098 * (0.17825)\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$\textit{N}$ & 602599 & 602599 & 430801 & 602599 & 602599 & 430801\\
+\hspace{1em}Pseudo $R^2$ & 0.0496008 & 0.171566 & 0.191933 & 0.0554468 & 0.183654 & 0.204091\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{verbatim}
+##                                                  XSA                 XCIP
+## y                                  1.03 *** (0.0008)  1.0019 ** (0.00130)
+## $\\bar{z_j}$                    1.4876 *** (0.01745) 1.3439 *** (0.02630)
+## ln k                             0.5304 *** (0.0058)  1.755 *** (0.03110)
+## ln w                             1.756 *** (0.02865) 0.8891 *** (0.02570)
+## $N_R$                           1.7625 *** (0.02645) 6.2972 *** (0.11395)
+## $N_{CIP}$                       1.4289 *** (0.01975)                     
+## $N_{SA}$                                             1.2301 *** (0.01285)
+## $I_{2014+}$                                                              
+## $I_{R_{NA}}$                                                             
+## $I_{R_{EU}}$                                                             
+## $I_{R_{AA}}$                                                             
+## $I_{R_{NA}} \\times I_{2014+}$                                           
+## $I_{R_{EU}} \\times  I_{2014+}$                                          
+## $I_{R_{AA}} \\times  I_{2014+}$                                          
+## $\\textit{N}$                                 602599               602599
+## Pseudo $R^2$                               0.0496008             0.171566
+##                                             X.XSACIP                XSA.1
+## y                               1.0255 *** (0.00210) 1.0275 *** (0.00095)
+## $\\bar{z_j}$                    1.7655 *** (0.05025) 1.4278 *** (0.01705)
+## ln k                             1.132 *** (0.02920) 0.5432 *** (0.00600)
+## ln w                            1.8158 *** (0.07365) 1.7879 *** (0.02930)
+## $N_R$                           8.4242 *** (0.22290) 1.8532 *** (0.06005)
+## $N_{CIP}$                                            1.4154 *** (0.01965)
+## $N_{SA}$                                                                 
+## $I_{2014+}$                                            1.0292   (0.03160)
+## $I_{R_{NA}}$                                         1.1223 *** (0.04335)
+## $I_{R_{EU}}$                                         1.1918 *** (0.04650)
+## $I_{R_{AA}}$                                         0.6259 *** (0.02655)
+## $I_{R_{NA}} \\times I_{2014+}$                        1.0528 ** (0.03850)
+## $I_{R_{EU}} \\times  I_{2014+}$                        1.0435 * (0.03900)
+## $I_{R_{AA}} \\times  I_{2014+}$                      1.2744 *** (0.05930)
+## $\\textit{N}$                                 430801               602599
+## Pseudo $R^2$                                0.191933            0.0554468
+##                                               XCIP.1              XSA.CIP
+## y                               1.0117 *** (0.00175) 1.0357 *** (0.00280)
+## $\\bar{z_j}$                     1.266 *** (0.02515) 1.6456 *** (0.04755)
+## ln k                            1.8324 *** (0.03260)  1.188 *** (0.03070)
+## ln w                            0.8886 *** (0.02575) 1.7995 *** (0.07290)
+## $N_R$                           2.6172 *** (0.10510) 4.0712 *** (0.22645)
+## $N_{CIP}$                                                                
+## $N_{SA}$                        1.2154 *** (0.01275)                     
+## $I_{2014+}$                     0.7704 *** (0.02690) 0.7949 *** (0.04055)
+## $I_{R_{NA}}$                    0.4052 *** (0.01970) 0.5113 *** (0.03520)
+## $I_{R_{EU}}$                    0.3269 *** (0.01660)  0.404 *** (0.02965)
+## $I_{R_{AA}}$                    0.1718 *** (0.01100) 0.1557 *** (0.01560)
+## $I_{R_{NA}} \\times I_{2014+}$    1.0398   (0.05420)   1.0094   (0.07635)
+## $I_{R_{EU}} \\times  I_{2014+}$ 1.1137 *** (0.06315)   1.0349   (0.08885)
+## $I_{R_{AA}} \\times  I_{2014+}$   1.0806   (0.10095)   1.2098 * (0.17825)
+## $\\textit{N}$                                 602599               430801
+## Pseudo $R^2$                                0.183654             0.204091
+\end{verbatim}
+
+Table S2 shows the ``neighboring'' or shorter-distance cross-domain
+combinations. When a cross-domain article is published in a relatively
+``close'' category (for example a neuroscience researcher publishes a
+paper in Biology), it is considered a ``neighbor''. Data was filtered
+for neighborSA, neighborCIP, and neighborSACIP. neighborSA activity was
+found by finding if any research was in SA category 1 to 4, neighborCIP
+was found by finding id any research was published in any CIP category
+of 1 to 7. neighborSACIP was found by checking if the article had both
+neighborCIP and neighborSA. Data was filtered for cross-domain activity
+by the years (Yp) from 1970 to 2018, the number of co-authors of a paper
+(Kp) ≥ 2, and the number Medical Subject Heading (MeSH) words ≥ 2 to
+distinguish mono-domain versus cross-domain activity. The parameters
+contribute to the total information of predicting papers that have cross
+domain activity with numbers reported in odds ratios (what are the odds
+of cross-domain activity based on a high value of certain parameters).
+The columns are each separate models that show what parameters
+contribute to SA, CIP, or SACIP in the logistic regressions. Robust
+error estimations were also made which act as confidence intervals for
+the estimated contribution of the parameters. In SA columns, the w and
+NRegp seemed to relate weakly to the logistic regression (with a very
+low pseudo R\^{}2 of \textasciitilde{} 0.05) while in CIP and SACIP, the
+nRegp appears to be much more strongly related and contributed the
+largest amount to the regression information (with pseudo-R\^{}2 without
+year interactions of about 0.17 and 0.19).
+
+The pseudo R\^{}2 value also showed that the interactions of years
+papers were published contributed very little to the logistic regression
+model (only adding about 0.01 to the value), suggesting that these
+trends are prevalent from the 1970s to 2018 rather than just 2014.
+
+\begin{table}
+
+\caption{\label{tab:s3}Table:S3}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}}
+\toprule
+  & (1) 
+ $\tiny X_{Distant,SA}$ & (2) 
+ $\tiny X_{Distant,CIP}$ & (3) 
+ $\tiny X_{Distant,SA\&CIP}$ & (4) 
+ $\tiny X_{Distant,SA}$ & (5) 
+ $\tiny X_{Distant,CIP}$ & (6) 
+ $\tiny X_{Distant,SA \& CIP}$\\
+\midrule
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}y & 1.0317 *** (0.0007) & NA *** NA & NA *** (NA) & NA *** ((NA)) & NA *** (((NA))) & 1.0609 *** (0.00210)\\
+\hspace{1em}$\bar{z_j}$ & 0.9975   (0.01185) & NA *** NA & NA *** (NA) & NA *** ((NA)) & NA *** (((NA))) & 1.3077 *** (0.03150)\\
+\hspace{1em}ln k & 0.8848 *** (0.0099) & NA *** NA & NA *** (NA) & NA *** ((NA)) & NA *** ((())) & 1.6387 *** (0.03610)\\
+\hspace{1em}ln w & 4.6549 *** (0.0788) & NA *** NA & NA *** (NA) & NA *** (()) & NA *** (()) & 4.8956 *** (0.15910)\\
+\hspace{1em}$N_R$ & 1.3243 *** (0.02405) & 1 *** NA & 1 *** () & NA *** () & NA *** (()) & 4.5694 *** (0.27500)\\
+\hspace{1em}$N_{CIP}$ & 1.3073 *** (0.02305) &  &  & NA *** () &  & \\
+\hspace{1em}$N_{SA}$ &  & -2.9998 *** NA &  &  & NA *** () & \\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$I_{2014+}$ &  &  &  & 1 * NA & 1 *** (NA) & 0.7163 *** (0.04290)\\
+\hspace{1em}$I_{R_{NA}}$ &  &  &  & -2.6141 *** NA & -2.7252 *** (NA) & 0.3974 *** (0.02745)\\
+\hspace{1em}$I_{R_{EU}}$ &  &  &  & NA * NA & NA *** (NA) & 0.3448 *** (0.02415)\\
+\hspace{1em}$I_{R_{AA}}$ &  &  &  & NA *** NA & NA *** (NA) & 0.1914 *** (0.01465)\\
+\hspace{1em}$I_{R_{NA}} \times I_{2014+}$ &  &  &  & NA ** NA & NA   (NA) & 1.0115   (0.07175)\\
+\hspace{1em}$I_{R_{EU}} \times  I_{2014+}$ &  &  &  & -65.743786   NA & -44.606262   (NA) & 0.9381   (0.06915)\\
+\hspace{1em}$I_{R_{AA}} \times  I_{2014+}$ &  &  &  & 0.0321867 *** NA & 0.0203078 ** (NA) & 0.9505   (0.08935)\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$\textit{N}$ & 602599 & 602599 & 207281 & 602599 & 602599 & 207281\\
+\hspace{1em}Pseudo $R^2$ & 0.0725262 & 0.194511 & 0.308123 & 0.0734646 & 0.204474 & 0.319105\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{verbatim}
+##                                                  XSA           XCIP    X.XSACIP
+## y                                1.0317 *** (0.0007)      NA *** NA NA *** (NA)
+## $\\bar{z_j}$                      0.9975   (0.01185)      NA *** NA NA *** (NA)
+## ln k                             0.8848 *** (0.0099)      NA *** NA NA *** (NA)
+## ln w                             4.6549 *** (0.0788)      NA *** NA NA *** (NA)
+## $N_R$                           1.3243 *** (0.02405)       1 *** NA    1 *** ()
+## $N_{CIP}$                       1.3073 *** (0.02305)                           
+## $N_{SA}$                                             -2.9998 *** NA            
+## $I_{2014+}$                                                                    
+## $I_{R_{NA}}$                                                                   
+## $I_{R_{EU}}$                                                                   
+## $I_{R_{AA}}$                                                                   
+## $I_{R_{NA}} \\times I_{2014+}$                                                 
+## $I_{R_{EU}} \\times  I_{2014+}$                                                
+## $I_{R_{AA}} \\times  I_{2014+}$                                                
+## $\\textit{N}$                                 602599         602599      207281
+## Pseudo $R^2$                               0.0725262       0.194511    0.308123
+##                                            XSA.1            XCIP.1
+## y                                  NA *** ((NA))   NA *** (((NA)))
+## $\\bar{z_j}$                       NA *** ((NA))   NA *** (((NA)))
+## ln k                               NA *** ((NA))     NA *** ((()))
+## ln w                                 NA *** (())       NA *** (())
+## $N_R$                                  NA *** ()       NA *** (())
+## $N_{CIP}$                              NA *** ()                  
+## $N_{SA}$                                                 NA *** ()
+## $I_{2014+}$                               1 * NA        1 *** (NA)
+## $I_{R_{NA}}$                      -2.6141 *** NA  -2.7252 *** (NA)
+## $I_{R_{EU}}$                             NA * NA       NA *** (NA)
+## $I_{R_{AA}}$                           NA *** NA       NA *** (NA)
+## $I_{R_{NA}} \\times I_{2014+}$          NA ** NA         NA   (NA)
+## $I_{R_{EU}} \\times  I_{2014+}$  -65.743786   NA -44.606262   (NA)
+## $I_{R_{AA}} \\times  I_{2014+}$ 0.0321867 *** NA 0.0203078 ** (NA)
+## $\\textit{N}$                             602599            602599
+## Pseudo $R^2$                           0.0734646          0.204474
+##                                              XSA.CIP
+## y                               1.0609 *** (0.00210)
+## $\\bar{z_j}$                    1.3077 *** (0.03150)
+## ln k                            1.6387 *** (0.03610)
+## ln w                            4.8956 *** (0.15910)
+## $N_R$                           4.5694 *** (0.27500)
+## $N_{CIP}$                                           
+## $N_{SA}$                                            
+## $I_{2014+}$                     0.7163 *** (0.04290)
+## $I_{R_{NA}}$                    0.3974 *** (0.02745)
+## $I_{R_{EU}}$                    0.3448 *** (0.02415)
+## $I_{R_{AA}}$                    0.1914 *** (0.01465)
+## $I_{R_{NA}} \\times I_{2014+}$    1.0115   (0.07175)
+## $I_{R_{EU}} \\times  I_{2014+}$   0.9381   (0.06915)
+## $I_{R_{AA}} \\times  I_{2014+}$   0.9505   (0.08935)
+## $\\textit{N}$                                 207281
+## Pseudo $R^2$                                0.319105
+\end{verbatim}
+
+Table S3 shows the ``distant'' cross-domain combinations. When a
+cross-domain article is published in a relatively ``far'' category (for
+example a neuroscience research co-author publishes a paper in
+Engineering), it is considered ``distant''. Data was filtered for
+distantSA, distantCIP, and distantSACIP. distantSA activity was found by
+finding if a research paper was in SA category 1 to 4 AND in SA 5 to 6.
+distantCIP was found by finding if a research paper was in any CIP
+category 1,3, or 5 and also in CIP 4 or 8. distantSACIP was found by
+checking if the article had both distantCIP and distantSA. Data was
+filtered for cross-domain activity by the years (Yp) from 1970 to 2018,
+the number of co-authors of a paper (Kp) ≥ 2, and the number Medical
+Subject Heading (MeSH) words ≥ 2 to distinguish mono-domain versus
+cross-domain activity.
+
+The parameters contribute to the total information of predicting papers
+that have cross domain activity with numbers reported in odds ratios
+(what are the odds of cross-domain activity based on a high value of
+certain parameters). The columns are each separate models that show what
+parameters contribute to distantSA, distantCIP, or distantSACIP in the
+logistic regressions. Robust error estimations were also made which act
+as confidence intervals for the estimated contribution of the
+parameters. In distantSA and distantSACIP columns, the log(w) seemed to
+relate more to the logistic regression information compared to the other
+parameters (with a very low pseudo R\^{}2 of 0.0375 without year
+interactions and 0.496 with year interactions) while in CIP and SACIP,
+the nRegp appears to also be strongly related and contributed the
+largest amount to the regression information (pseudo-R\^{}2 without year
+interactions of about 0.149 and 0.147).
+
+The pseudo R\^{}2 value also showed that the interactions of years
+papers were published contributed more to the distantCIP and
+distantSACIP logistic regression models (adding about 0.025 and 0.45 to
+the odds of predicting the paper being cross-domain), suggesting that
+there was slight increases in distant cross-domain brain-related
+research published from 2014 to 2018.
+
+\begin{table}
+
+\caption{\label{tab:s4}Table:S4}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{6em}}
+\toprule
+  & (1) 
+ $ z_{p}$ & (2) 
+ $ z_{p}$ & (3) 
+ $ z_{p}$ & (4) 
+ $ z_{p}$ & (5) 
+ $ z_{p}$ & (6) 
+ $ z_{p}$\\
+\midrule
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}ln k & 0.415*** (0.001986) & 0.4157*** (0.001984) & 0.421*** (0.001981) & 0.4376*** (0.002953) & 0.4244*** (0.002446) & 0.4057*** (0.002467)\\
+\hspace{1em}ln w & 0.03184*** (0.003262) & 0.03745*** (0.003252) & 0.03776*** (0.003256) & 0.02437*** (0.004839) & 0.05427*** (0.00389) & 0.03839*** (0.003888)\\
+\hspace{1em}t & -0.01982  (0.01488) & -0.01935  (0.01487) & -0.01945  (0.01488) & -0.004204  (0.02186) & -0.01622  (0.01683) & -0.02053  (0.01608)\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$I_{XSA}$ & 0.04803*** (0.00269) &  &  &  &  & \\
+\hspace{1em}$I_{XCIP}$ & 0.0691*** (0.002928) &  &  &  &  & \\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$I_{X_{Neighboring,SA}}$ &  & 0.0878*** (0.003114) &  &  &  & \\
+\hspace{1em}$I_{X_{Neighboring,CIP}}$ &  & 0.06751*** (0.003156) &  &  &  & \\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$I_{X_{Distant,SA}}$ &  &  & -0.009835*** (0.002844) &  &  & \\
+\hspace{1em}$I_{X_{Distant,CIP}}$ &  &  & 0.02031** (0.006294) &  &  & \\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}$I_{X_{SA\&CIP}}$ &  &  &  & 0.132*** (0.004934) &  & \\
+\hspace{1em}$I_{X_{Neighboring,SA\&CIP}}$ &  &  &  &  & 0.1324*** (0.005627) & \\
+\hspace{1em}$I_{X_{Distant,SA\&CIP}}$ &  &  &  &  &  & 0.04273*** (0.01051)\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}constant & -0.4151 (0.3352011) & -0.5788 (0.2246505) & -0.5788 (0.2246505) & -0.4151 (0.3352011) & -0.6694 (0.2402241) & -0.6694 (0.2402241)\\
+\hspace{1em}year dummy & Y & Y & Y & Y & Y & Y\\
+\hspace{1em}topic category dummy & Y & Y & Y & Y & Y & Y\\
+\hspace{1em}department category dummy & Y & Y & Y & Y & Y & Y\\
+\hspace{1em}Region dummy & Y & Y & Y & Y & Y & Y\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{7}{l}{\textbf{ }}\\
+\hspace{1em}N & 824306 & 824306 & 824306 & 357859 & 551771 & 526904\\
+\hspace{1em}adj.$R^2$ & 0.09284 & 0.09329 & 0.09187 & 0.11 & 0.07646 & 0.07816\\
+F & 1307 & 1313 & 1293 & 752.1 & 772.9 & 758.6\\
+\# researcher profiles & 8371 & 8371 & 8371 & 8345 & 8358 & 8364\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{verbatim}
+##                                          model1_full           model2_full
+## ln k                             0.415*** (0.001986)  0.4157*** (0.001984)
+## ln w                           0.03184*** (0.003262) 0.03745*** (0.003252)
+## t                                -0.01982  (0.01488)   -0.01935  (0.01487)
+## $I_{XSA}$                       0.04803*** (0.00269)                      
+## $I_{XCIP}$                      0.0691*** (0.002928)                      
+## $I_{X_{Neighboring,SA}}$                              0.0878*** (0.003114)
+## $I_{X_{Neighboring,CIP}}$                            0.06751*** (0.003156)
+## $I_{X_{Distant,SA}}$                                                      
+## $I_{X_{Distant,CIP}}$                                                     
+## $I_{X_{SA\\&CIP}}$                                                        
+## $I_{X_{Neighboring,SA\\&CIP}}$                                            
+## $I_{X_{Distant,SA\\&CIP}}$                                                
+## constant                         -0.4151 (0.3352011)   -0.5788 (0.2246505)
+## year dummy                                         Y                     Y
+## topic category dummy                               Y                     Y
+## department category dummy                          Y                     Y
+## Region dummy                                       Y                     Y
+## N                                             824306                824306
+## adj.$R^2$                                    0.09284               0.09329
+## F                                               1307                  1313
+## \\# researcher profiles                         8371                  8371
+##                                            model3_full           model4_full
+## ln k                               0.421*** (0.001981)  0.4376*** (0.002953)
+## ln w                             0.03776*** (0.003256) 0.02437*** (0.004839)
+## t                                  -0.01945  (0.01488)  -0.004204  (0.02186)
+## $I_{XSA}$                                                                   
+## $I_{XCIP}$                                                                  
+## $I_{X_{Neighboring,SA}}$                                                    
+## $I_{X_{Neighboring,CIP}}$                                                   
+## $I_{X_{Distant,SA}}$           -0.009835*** (0.002844)                      
+## $I_{X_{Distant,CIP}}$             0.02031** (0.006294)                      
+## $I_{X_{SA\\&CIP}}$                                       0.132*** (0.004934)
+## $I_{X_{Neighboring,SA\\&CIP}}$                                              
+## $I_{X_{Distant,SA\\&CIP}}$                                                  
+## constant                           -0.5788 (0.2246505)   -0.4151 (0.3352011)
+## year dummy                                           Y                     Y
+## topic category dummy                                 Y                     Y
+## department category dummy                            Y                     Y
+## Region dummy                                         Y                     Y
+## N                                               824306                357859
+## adj.$R^2$                                      0.09187                  0.11
+## F                                                 1293                 752.1
+## \\# researcher profiles                           8371                  8345
+##                                         model5_full           model6_full
+## ln k                           0.4244*** (0.002446)  0.4057*** (0.002467)
+## ln w                           0.05427*** (0.00389) 0.03839*** (0.003888)
+## t                               -0.01622  (0.01683)   -0.02053  (0.01608)
+## $I_{XSA}$                                                                
+## $I_{XCIP}$                                                               
+## $I_{X_{Neighboring,SA}}$                                                 
+## $I_{X_{Neighboring,CIP}}$                                                
+## $I_{X_{Distant,SA}}$                                                     
+## $I_{X_{Distant,CIP}}$                                                    
+## $I_{X_{SA\\&CIP}}$                                                       
+## $I_{X_{Neighboring,SA\\&CIP}}$ 0.1324*** (0.005627)                      
+## $I_{X_{Distant,SA\\&CIP}}$                           0.04273*** (0.01051)
+## constant                        -0.6694 (0.2402241)   -0.6694 (0.2402241)
+## year dummy                                        Y                     Y
+## topic category dummy                              Y                     Y
+## department category dummy                         Y                     Y
+## Region dummy                                      Y                     Y
+## N                                            551771                526904
+## adj.$R^2$                                   0.07646               0.07816
+## F                                             772.9                 758.6
+## \\# researcher profiles                        8358                  8364
+\end{verbatim}
+
+Table S4 shows the career-level analysis with individual researcher
+fixed effects. Data was filtered by the years (Yp) from 1970 to 2018,
+the number of co-authors of a paper (Kp) ≥ 2, the number of MeSH words ≥
+2, and researchers with number of articles published (Na) ≥ 10. Robust
+standard errors are shown in parenthesis below each estimate and Y
+indicates additional fixed effects in the regression model. Each column
+is comparing normalized citation measures (Zp) with log(Kp), log(w), and
+the difference between the year the paper was published and the main
+authors first publication year (τ). There are additional parameters for
+each column comparing the ``broad'' SA and CIP, ``neighbor'' SA and CIP,
+``distant'' SA and CIP, ``broad'' SACIP, ``neighbor'' SACIP, and
+``distant'' SACIP.
+
+The log number of coauthors (Kp) appears to be relatively the strongest
+positive correlation to predicting the number of citations a paper will
+receive. This is prevalent in all columns of data showing higher
+regression coefficients than any of the additional parameters as well.
+The pseudo R\^{}2 values are relatively low, showing a range of adjusted
+R\^{}2 values of 0.09 to 0.13. The highest adjusted R\^{}2 value of 0.13
+is comparing zp with ``broad'' SACIP with also the lowest number of
+articles (N=358237) of the 6 columns. All of the F-statistics were
+\textgreater\textgreater{} 1 ranging from 193 to 262 and every parameter
+robust standard error was statistically significant.
+
+\begin{table}
+
+\caption{\label{tab:s5}Table:S5}
+\centering
+\begin{tabular}[t]{llll}
+\toprule
+  & (1) 
+ $ z_{p}$ & (2) 
+ $ z_{p}$ & (3) 
+ $ z_{p}$\\
+\midrule
+\addlinespace[0.3em]
+\hline
+\multicolumn{4}{l}{\textbf{ }}\\
+\hspace{1em}ln k & 0.4382*** (0.002953) & 0.4247*** (0.002445) & 0.4058*** (0.002468)\\
+\hspace{1em}ln w & 0.02491*** (0.004838) & 0.05446*** (0.003888) & 0.03841*** (0.003888)\\
+\hspace{1em}t & -0.01838* (0.009258) & -0.01392  (0.007633) & -0.01751* (0.007844)\\
+\hspace{1em}$I_{2014+}$ & 0.04437  (0.04239) & 0.02929  (0.03478) & -0.02203  (0.03568)\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{4}{l}{\textbf{ }}\\
+\hspace{1em}$I_{X_{SA\&CIP}}$ & 0.1554*** (0.005306) &  & \\
+\hspace{1em}$I_{X_{SA\&CIP}}\times I_{2014+}$ & -0.08808*** (0.007352) &  & \\
+\addlinespace[0.3em]
+\hline
+\multicolumn{4}{l}{\textbf{ }}\\
+\hspace{1em}$I_{X_{Neighboring,SA\&CIP}}$ &  & 0.1822*** (0.006124) & \\
+\hspace{1em}$I_{X_{Neighboring,SA\&CIP}}\times I_{2014+}$ &  & -0.16*** (0.007772) & \\
+\addlinespace[0.3em]
+\hline
+\multicolumn{4}{l}{\textbf{ }}\\
+\hspace{1em}$I_{X_{Distant,SA\&CIP}}$ &  &  & 0.02795* (0.01153)\\
+\hspace{1em}$I_{X_{Distant,SA\&CIP}}\times I_{2014+} $ &  &  & 0.04333** (0.01389)\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{4}{l}{\textbf{ }}\\
+\hspace{1em}constant & -0.2714 (0.2348) & -0.3779 (0.2014) & -0.1029 (0.2089)\\
+\hspace{1em}year dummy & Y & Y & Y\\
+\hspace{1em}topic category dummy & Y & Y & Y\\
+\hspace{1em}department category dummy & Y & Y & Y\\
+\hspace{1em}Region dummy & Y & Y & Y\\
+\addlinespace[0.3em]
+\hline
+\multicolumn{4}{l}{\textbf{ }}\\
+\hspace{1em}N & 357859 & 551771 & 526904\\
+\hspace{1em}adj.$R^2$ & 0.1104 & 0.07718 & 0.07817\\
+\hspace{1em}F & 713.7 & 737.5 & 717.8\\
+\hspace{1em}\# researcher profiles & 8345 & 8358 & 8364\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{verbatim}
+##                                                            model1_full
+## ln k                                              0.4382*** (0.002953)
+## ln w                                             0.02491*** (0.004838)
+## t                                                 -0.01838* (0.009258)
+## $I_{2014+}$                                         0.04437  (0.04239)
+## $I_{X_{SA\\&CIP}}$                                0.1554*** (0.005306)
+## $I_{X_{SA\\&CIP}}\\times I_{2014+}$             -0.08808*** (0.007352)
+## $I_{X_{Neighboring,SA\\&CIP}}$                                        
+## $I_{X_{Neighboring,SA\\&CIP}}\\times I_{2014+}$                       
+## $I_{X_{Distant,SA\\&CIP}}$                                            
+## $I_{X_{Distant,SA\\&CIP}}\\times I_{2014+} $                          
+## constant                                              -0.2714 (0.2348)
+## year dummy                                                           Y
+## topic category dummy                                                 Y
+## department category dummy                                            Y
+## Region dummy                                                         Y
+## N                                                               357859
+## adj.$R^2$                                                       0.1104
+## F                                                                713.7
+## \\# researcher profiles                                           8345
+##                                                           model2_full
+## ln k                                             0.4247*** (0.002445)
+## ln w                                            0.05446*** (0.003888)
+## t                                                -0.01392  (0.007633)
+## $I_{2014+}$                                        0.02929  (0.03478)
+## $I_{X_{SA\\&CIP}}$                                                   
+## $I_{X_{SA\\&CIP}}\\times I_{2014+}$                                  
+## $I_{X_{Neighboring,SA\\&CIP}}$                   0.1822*** (0.006124)
+## $I_{X_{Neighboring,SA\\&CIP}}\\times I_{2014+}$   -0.16*** (0.007772)
+## $I_{X_{Distant,SA\\&CIP}}$                                           
+## $I_{X_{Distant,SA\\&CIP}}\\times I_{2014+} $                         
+## constant                                             -0.3779 (0.2014)
+## year dummy                                                          Y
+## topic category dummy                                                Y
+## department category dummy                                           Y
+## Region dummy                                                        Y
+## N                                                              551771
+## adj.$R^2$                                                     0.07718
+## F                                                               737.5
+## \\# researcher profiles                                          8358
+##                                                           model3_full
+## ln k                                             0.4058*** (0.002468)
+## ln w                                            0.03841*** (0.003888)
+## t                                                -0.01751* (0.007844)
+## $I_{2014+}$                                       -0.02203  (0.03568)
+## $I_{X_{SA\\&CIP}}$                                                   
+## $I_{X_{SA\\&CIP}}\\times I_{2014+}$                                  
+## $I_{X_{Neighboring,SA\\&CIP}}$                                       
+## $I_{X_{Neighboring,SA\\&CIP}}\\times I_{2014+}$                      
+## $I_{X_{Distant,SA\\&CIP}}$                         0.02795* (0.01153)
+## $I_{X_{Distant,SA\\&CIP}}\\times I_{2014+} $      0.04333** (0.01389)
+## constant                                             -0.1029 (0.2089)
+## year dummy                                                          Y
+## topic category dummy                                                Y
+## department category dummy                                           Y
+## Region dummy                                                        Y
+## N                                                              526904
+## adj.$R^2$                                                     0.07817
+## F                                                               717.8
+## \\# researcher profiles                                          8364
+\end{verbatim}
+
+Table S5 shows the Flagship Project Effect using career-level analysis
+with researcher fixed effects. Data was filtered by the years (Yp) from
+1970 to 2018, Kp ≥ 2, w ≥ 2, and researchers with Na ≥ 10. Robust
+standard errors are shown in parenthesis below each estimate and Y
+indicates additional fixed effects in the regression model. Each of the
+3 columns are comparing Zp with log(Kp), log(w), and the whether the
+papers were published from years 2014 to 2018 (I\_year). There are
+additional parameters for each column comparing the ``broad'' SACIP and
+``broad'' SACIP cross interaction with I\_year, ``neighbor'' SACIP and
+``neighbor'' SACIP cross interaction with I\_year, along with
+``distant'' SACIP and ``distant'' SACIP cross-interaction with I\_year.
+
+The log number of coauthors (Kp) appears to be relatively the strongest
+positive correlation to predicting the number of citations a paper will
+receive. This is prevalent in all columns of data showing higher
+regression coefficients than any of the additional parameters as well.
+The adjusted R\^{}2 values are relatively low, showing a range of
+adjusted R\^{}2 values of 0.09 to 0.13. The highest adjusted R\^{}2
+value of 0.13 is comparing zp with ``broad'' SACIP and the
+cross-interaction of ``broad'' SACIP ith I\_year. It is also the lowest
+number of articles (N=358237) of the 3 columns. All of the F-statistics
+were \textgreater\textgreater{} 1 ranging from 191 to 229 and every
+parameter robust standard error except ``distant'' SACIP parameter in
+column 3 was statistically significant.
+
+\begin{verbatim}
+## Warning: package 'car' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble  3.1.0     v dplyr   1.0.4
+## v tidyr   1.1.2     v stringr 1.4.0
+## v purrr   0.3.4     v forcats 0.5.1
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter()     masks stats::filter()
+## x dplyr::group_rows() masks kableExtra::group_rows()
+## x dplyr::lag()        masks stats::lag()
+## x dplyr::recode()     masks car::recode()
+## x purrr::some()       masks car::some()
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 1 parsing failure.
+## row col expected actual
+##   9  -- a number   (NA)
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 2 rows containing missing values (geom_point).
+\end{verbatim}
+
+\includegraphics{Ryan_Thackston_final_project_part3_files/figure-latex/fig5A-1.pdf}
+
+\begin{verbatim}
+## Warning: 1 parsing failure.
+## row col expected actual
+##   8  -- a number   (NA)
+\end{verbatim}
+
+\includegraphics{Ryan_Thackston_final_project_part3_files/figure-latex/figure5b-1.pdf}
+
+\includegraphics{Ryan_Thackston_final_project_part3_files/figure-latex/figure5c-1.pdf}
+
+\includegraphics{Ryan_Thackston_final_project_part3_files/figure-latex/fig5d-1.pdf}
+
+\end{document}

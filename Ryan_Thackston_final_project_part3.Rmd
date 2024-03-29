@@ -1,0 +1,348 @@
+---
+title: "Project - Part 3"
+author: "Ryan Thackston"
+date: "5/2/2021"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+library(kableExtra)
+options(knitr.table.format = "latex")
+options(warn=-1)
+```
+
+## Table S1:
+
+```{r S1}
+#install.packages("kableExtra")
+# For dev version
+# install.packages("devtools")
+#devtools::install_github("haozhu233/kableExtra")
+library(kableExtra)
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+S1_data <- read.csv("S1_df_final.csv", header=T, row.names=1)
+S1_data[is.na(S1_data)] <- " "
+
+  kbl(S1_data,caption = "Table:S1",
+      col.names =c("(1) \n $X_{SA}$","(2) \n $X_{CIP}$","(3) \n $X_{SA\\&CIP}$","(4) \n $X_{SA}$","(5) \n $X_{CIP}$","(6) \n $X_{SA \\& CIP}$"),format = "latex", escape = F,booktabs=T)  %>% pack_rows(" ", 1, 7, hline_before = T) %>%
+  pack_rows(" ", 8, 14,hline_before = T) %>%
+  pack_rows(" ", 15, 16,hline_before = T)%>% 
+  column_spec(c(2:7), width = "6em") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+  S1_data 
+  
+```
+Table S1 shows the results of a logistic regression model of the cross-domain activity at an article level. This means researchers from different backgrounds collaborating (SA) by co-authoring published papers in differing categories (CIP). Data was filtered for cross-domain activity by the years (Yp) from 1970 to 2018, the number of co-authors of a paper (Kp) ≥ 2, and the number Medical Subject Heading (MeSH) words ≥ 2  to distinguish mono-domain versus cross-domain activity.
+The parameters contribute to the total information of predicting papers that have cross domain activity with numbers reported in odds ratios (what are the odds of cross-domain activity based on a high value of certain parameters). The columns are each separate models that show what parameters contribute to SA, CIP, or SACIP in the logistic regressions. Robust error estimations were also made which act as confidence intervals for the estimated contribution of the parameters. From looking at the values, the log number of MeSH words (w) seems to relate  more to the SA and SACIP. The region the paper was published (NRegp) appears to contribute highly to Classification of Instructional Program (CIP) and SACIP. This suggests that researchers in certain regions of the world historically publish papers ranging from a wide variety of subject fields from their own. The pseudo R^2 value also showed that the interactions of years papers were published contributed very little to the logistic regression model, suggesting that these trends are prevalent from the 1970s to 2018 rather than just 2014.
+
+```{r S2}
+
+
+S2_data <- read.csv("S2_df_final.csv", header=T, row.names=1)
+S2_data[is.na(S2_data)] <- " "
+  kbl(S2_data,caption = "Table:S2",
+      col.names =c("(1) \n $\\tiny X_{Distant,SA}$","(2) \n $\\tiny X_{Distant,CIP}$","(3) \n $\\tiny X_{Neibor,SA\\&CIP}$","(4) \n $\\tiny X_{Distant,SA}$","(5) \n $\\tiny X_{Distant,CIP}$","(6) \n $\\tiny X_{Distant,SA \\& CIP}$"),format = "latex", escape = F,booktabs=T)  %>% pack_rows(" ", 1, 7, hline_before = T) %>%
+  pack_rows(" ", 8, 14,hline_before = T) %>%
+  pack_rows(" ", 15, 16,hline_before = T)%>% 
+  column_spec(c(0:7), width = "6em") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+  
+  S2_data
+  
+```
+Table S2 shows the "neighboring" or shorter-distance cross-domain combinations. When a cross-domain article is published in a relatively "close" category (for example a neuroscience researcher publishes a paper in Biology), it is considered a "neighbor". Data was filtered for neighborSA, neighborCIP, and neighborSACIP. neighborSA activity was found by finding if any research was in SA category 1 to 4, neighborCIP was found by finding id any research was published in any CIP category of 1 to 7. neighborSACIP was found by checking if the article had both neighborCIP and neighborSA. Data was filtered for cross-domain activity by the years (Yp) from 1970 to 2018, the number of co-authors of a paper (Kp) ≥ 2, and the number Medical Subject Heading (MeSH) words ≥ 2  to distinguish mono-domain versus cross-domain activity.
+The parameters contribute to the total information of predicting papers that have cross domain activity with numbers reported in odds ratios (what are the odds of cross-domain activity based on a high value of certain parameters). The columns are each separate models that show what parameters contribute to SA, CIP, or SACIP in the logistic regressions. Robust error estimations were also made which act as confidence intervals for the estimated contribution of the parameters. In SA columns, the w and NRegp seemed to relate weakly to the logistic regression (with a very low pseudo R^2 of ~ 0.05) while in CIP and SACIP, the nRegp appears to be much more strongly related and contributed the largest amount to the regression information (with pseudo-R^2 without year interactions of about 0.17 and 0.19).
+
+The pseudo R^2 value also showed that the interactions of years papers were published contributed very little to the logistic regression model (only adding about 0.01 to the value), suggesting that these trends are prevalent from the 1970s to 2018 rather than just 2014.
+
+
+
+```{r s3}
+S3_data <- read.csv("S3_df_final.csv", header=T, row.names=1)
+S3_data[is.na(S3_data)] <- " "
+  kbl(S3_data,caption = "Table:S3",
+      col.names =c("(1) \n $\\tiny X_{Distant,SA}$","(2) \n $\\tiny X_{Distant,CIP}$","(3) \n $\\tiny X_{Distant,SA\\&CIP}$","(4) \n $\\tiny X_{Distant,SA}$","(5) \n $\\tiny X_{Distant,CIP}$","(6) \n $\\tiny X_{Distant,SA \\& CIP}$"),format = "latex", escape = F,booktabs=T)  %>% pack_rows(" ", 1, 7, hline_before = T) %>%
+  pack_rows(" ", 8, 14,hline_before = T) %>%
+  pack_rows(" ", 15, 16,hline_before = T)%>% 
+  column_spec(c(0:7), width = "6em") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+  S3_data
+```
+Table S3 shows the "distant" cross-domain combinations. When a cross-domain article is published in a relatively "far" category (for example a neuroscience research co-author publishes a paper in Engineering), it is considered "distant". Data was filtered for distantSA, distantCIP, and distantSACIP. distantSA activity was found by finding if a research paper was in SA category 1 to 4 AND in SA 5 to 6. distantCIP was found by finding if a research paper was in any CIP category 1,3, or 5 and also in CIP 4 or 8. distantSACIP was found by checking if the article had both distantCIP and distantSA. Data was filtered for cross-domain activity by the years (Yp) from 1970 to 2018, the number of co-authors of a paper (Kp) ≥ 2, and the number Medical Subject Heading (MeSH) words ≥ 2  to distinguish mono-domain versus cross-domain activity.
+
+The parameters contribute to the total information of predicting papers that have cross domain activity with numbers reported in odds ratios (what are the odds of cross-domain activity based on a high value of certain parameters). The columns are each separate models that show what parameters contribute to distantSA, distantCIP, or distantSACIP in the logistic regressions. Robust error estimations were also made which act as confidence intervals for the estimated contribution of the parameters. In distantSA and distantSACIP columns, the log(w) seemed to relate more to the logistic regression information compared to the other parameters (with a very low pseudo R^2 of 0.0375 without year interactions and 0.496 with year interactions) while in CIP and SACIP, the nRegp appears to also be strongly related and contributed the largest amount to the regression information (pseudo-R^2 without year interactions of about 0.149 and 0.147).
+
+The pseudo R^2 value also showed that the interactions of years papers were published contributed more to the distantCIP and distantSACIP logistic regression models (adding about 0.025 and 0.45 to the odds of predicting the paper being cross-domain), suggesting that there was slight increases in distant cross-domain brain-related research published from 2014 to 2018. 
+
+
+```{r s4}
+S4_data <- read.csv("S4_df_final.csv", header=T, row.names=1)
+S4_data[is.na(S4_data)] <- " "
+
+  kbl(S4_data,caption = "Table:S4",
+      col.names =c("(1) \n $ z_{p}$","(2) \n $ z_{p}$","(3) \n $ z_{p}$","(4) \n $ z_{p}$","(5) \n $ z_{p}$","(6) \n $ z_{p}$"),format = "latex", escape = F,booktabs=T)  %>% pack_rows(" ", 1, 3, hline_before = T) %>%
+  pack_rows(" ", 4, 5,hline_before = T) %>%
+    pack_rows(" ", 6, 7,hline_before = T) %>%
+    pack_rows(" ", 8, 9,hline_before = T) %>%
+  pack_rows(" ", 10, 12,hline_before = T)%>% 
+    pack_rows(" ", 13, 17,hline_before = T)%>% 
+    pack_rows(" ", 18, 19,hline_before = T)%>% 
+  column_spec(c(1:7), width = "6em") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+  S4_data
+```
+
+Table S4 shows the career-level analysis with individual researcher fixed effects. Data was filtered by the years (Yp) from 1970 to 2018, the number of co-authors of a paper (Kp) ≥ 2, the number of MeSH words ≥ 2, and researchers with number of articles published (Na) ≥ 10. Robust standard errors are shown in parenthesis below each estimate and Y indicates additional fixed effects in the regression model. Each column is comparing normalized citation measures (Zp) with log(Kp), log(w), and the difference between the year the paper was published and the main authors first publication year (τ). There are additional parameters for each column comparing the "broad" SA and CIP, "neighbor" SA and CIP, "distant" SA and CIP, "broad" SACIP, "neighbor" SACIP, and "distant" SACIP.
+
+The log number of coauthors (Kp) appears to be relatively the strongest positive correlation to predicting the number of citations a paper will receive. This is prevalent in all columns of data showing higher regression coefficients than any of the additional parameters as well. The pseudo R^2 values are relatively low, showing a range of adjusted R^2 values of 0.09 to 0.13. The highest adjusted R^2 value of 0.13 is comparing zp with "broad" SACIP with also the lowest number of articles (N=358237) of the 6 columns. All of the F-statistics were >> 1 ranging from 193 to 262 and every parameter robust standard error was statistically significant.
+
+```{r s5}
+S5_data <- read.csv("S5_df_final.csv", header=T, row.names=1)
+S5_data[is.na(S5_data)] <- " "
+
+  kbl(S5_data,caption = "Table:S5",
+      col.names =c("(1) \n $ z_{p}$","(2) \n $ z_{p}$","(3) \n $ z_{p}$"),format = "latex", escape = F,booktabs=T)  %>% pack_rows(" ", 1, 4, hline_before = T) %>%
+  pack_rows(" ", 5, 6,hline_before = T) %>%
+    pack_rows(" ", 7, 8,hline_before = T) %>%
+    pack_rows(" ", 9, 10,hline_before = T) %>%
+  pack_rows(" ", 11, 15,hline_before = T)%>% 
+    pack_rows(" ", 16, 19,hline_before = T)%>% 
+    #column_spec(c(0:2), width = "5em") %>%
+  column_spec(0, width = "10em") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+  S5_data
+```
+
+Table S5 shows the Flagship Project Effect using career-level analysis with researcher fixed effects. Data was filtered by the years (Yp) from 1970 to 2018, Kp ≥ 2, w ≥ 2, and researchers with Na ≥ 10. Robust standard errors are shown in parenthesis below each estimate and Y indicates additional fixed effects in the regression model. Each of the 3 columns are comparing Zp with log(Kp), log(w), and the whether the papers were published from years 2014 to 2018 (I_year). There are additional parameters for each column comparing the "broad" SACIP and "broad" SACIP cross interaction with I_year, "neighbor" SACIP and "neighbor" SACIP cross interaction with I_year, along with "distant" SACIP and "distant" SACIP cross-interaction with I_year. 
+
+The log number of coauthors (Kp) appears to be relatively the strongest positive correlation to predicting the number of citations a paper will receive. This is prevalent in all columns of data showing higher regression coefficients than any of the additional parameters as well. The adjusted R^2 values are relatively low, showing a range of adjusted R^2 values of 0.09 to 0.13. The highest adjusted R^2 value of 0.13 is comparing zp with "broad" SACIP and the cross-interaction of "broad" SACIP ith I_year. It is also the lowest number of articles (N=358237) of the 3 columns. All of the F-statistics were >> 1 ranging from 191 to 229 and every parameter robust standard error except "distant" SACIP parameter in column 3 was statistically significant.
+
+```{r fig5A}
+library(car)
+library(stats)
+library(ggplot2)
+library(readr)
+library(tidyverse)
+A_data <- data.frame(S1_data[1,1],S1_data[1,2],S1_data[1,3],
+                      S2_data[1,1],S2_data[1,2],S2_data[1,3],
+                      S3_data[1,1], S3_data[1,2],S3_data[1,3])
+A_data_split <- str_split_fixed(A_data, " ",3)
+A_data_coef <- as.numeric(A_data_split[,1])
+A_data_SE <- parse_number(A_data_split[,3])
+
+values <- data.frame(Beta=100*(A_data_coef-1),
+               se=100*c(A_data_SE)*1.96,
+               Type=c("Broad","Broad","Broad","Neighboring","Neighboring","Neighboring","Distant","Distant","Distant"),
+               Domain=c("SA","CIP","SA and CIP","SA","CIP","SA and CIP","SA","CIP","SA and CIP"))
+
+values$Type<-factor(values$Type,levels=c("Broad","Neighboring","Distant"))
+values$Domain<-factor(values$Domain,levels = c("SA","CIP","SA and CIP"))
+
+pd = position_dodge(2)
+
+plot1 <- ggplot(values, aes(
+    x = Type,
+    y = Beta,
+    color = factor(Domain)
+)) +
+    geom_errorbar(
+        aes(ymin = Beta-se,
+            ymax = Beta+se),
+        width = .2,
+        size = .7,
+        position = position_dodge(.5)
+    ) +
+    geom_point(shape = 15,
+               size = 3,
+               position = position_dodge(.5)) +
+    theme_bw() +
+    theme(
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.box = "horizontal",
+        panel.grid = element_blank(),
+        axis.title.y = element_text(vjust = 1.8),
+        axis.title.x = element_text(vjust = -0.5),
+        axis.title = element_text(face = "bold")
+    ) +
+    scale_color_manual(label=c("SA","CIP","SA and CIP"),values = c("light grey", "dark grey", "black")) +
+    geom_hline(yintercept=0, linetype="dashed", color = "black") +
+    ylab("Percent increase in Odds")
+
+plot1
+```
+
+```{r figure5b}
+C_data <- data.frame(S1_data[8,4],S1_data[8,5],S1_data[8,6],
+                      S2_data[8,4],S2_data[8,5],S2_data[8,6],
+                      S3_data[8,4], S3_data[8,5],S3_data[8,6])
+C_data_split <- str_split_fixed(C_data, " ",3)
+C_data_coef <- as.numeric(C_data_split[,1])
+C_data_SE <- parse_number(C_data_split[,3])
+
+values <- data.frame(Beta=100*(C_data_coef-1),
+               se=100*c(C_data_SE)*1.96,
+               Type=c("Broad","Broad","Broad","Neighboring","Neighboring","Neighboring","Distant","Distant","Distant"),
+               Domain=c("SA","CIP","SA and CIP","SA","CIP","SA and CIP","SA","CIP","SA and CIP"))
+
+values$Type<-factor(values$Type,levels=c("Broad","Neighboring","Distant"))
+values$Domain<-factor(values$Domain,levels = c("SA","CIP","SA and CIP"))
+
+pd = position_dodge(2)
+
+plot2 <- ggplot(values, aes(
+    x = Type,
+    y = Beta,
+    color = factor(Domain)
+)) +
+    geom_errorbar(
+        aes(ymin = Beta-se,
+            ymax = Beta+se),
+        width = .2,
+        size = .7,
+        position = position_dodge(.5)
+    ) +
+    geom_point(shape = 15,
+               size = 3,
+               position = position_dodge(.5)) +
+    theme_bw() +
+    theme(
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.box = "horizontal",
+        panel.grid = element_blank(),
+        axis.title.y = element_text(vjust = 1.8),
+        axis.title.x = element_text(vjust = -0.5),
+        axis.title = element_text(face = "bold")
+    ) +
+    scale_color_manual(label=c("SA","CIP","SA and CIP"),values = c("light grey", "dark grey", "black")) +
+    geom_hline(yintercept=0, linetype="dashed", color = "black") +
+    ylab("Percent increase in Odds")
+plot2
+```
+
+
+
+
+
+```{r figure5c}
+
+C_data <- data.frame(S4_data[4,1],S4_data[5,1],S4_data[10,4],
+                      S4_data[6,2],S4_data[7,2],S4_data[11,5],
+                      S4_data[8,3], S4_data[9,3],S4_data[12,6])
+C_data_split <- str_split_fixed(C_data, " ",3)
+C_data_coef <- parse_number(C_data_split[,1])
+C_data_SE <- parse_number(C_data_split[,2])
+
+values <- data.frame(Beta=100*(C_data_coef*1.24),
+               se=100*c(C_data_SE*1.24)*1.96,
+               Type=c("Broad","Broad","Broad","Neighboring","Neighboring","Neighboring","Distant","Distant","Distant"),
+               Domain=c("SA","CIP","SA and CIP","SA","CIP","SA and CIP","SA","CIP","SA and CIP"))
+
+values$Type<-factor(values$Type,levels=c("Broad","Neighboring","Distant"))
+values$Domain<-factor(values$Domain,levels = c("SA","CIP","SA and CIP"))
+
+pd = position_dodge(2)
+
+plot3<- ggplot(values, aes(
+    x = Type,
+    y = Beta,
+    color = factor(Domain)
+)) +
+    geom_errorbar(
+        aes(ymin = Beta-se,
+            ymax = Beta+se),
+        width = .2,
+        size = .7,
+        position = position_dodge(.5)
+    ) +
+    geom_point(shape = 15,
+               size = 3,
+               position = position_dodge(.5)) +
+    theme_bw() +
+    theme(
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.box = "horizontal",
+        panel.grid = element_blank(),
+        axis.title.y = element_text(vjust = 1.8),
+        axis.title.x = element_text(vjust = -0.5),
+        axis.title = element_text(face = "bold")
+    ) +
+    scale_color_manual(label=c("SA","CIP","SA and CIP"),values = c("light grey", "dark grey", "black")) +
+    geom_hline(yintercept=0, linetype="dashed", color = "black") +
+    ylab("Percent increase in citations associated with X")
+plot3
+```
+
+```{r fig5d}
+C_data <- data.frame(S5_data[5,1],S5_data[6,1],S5_data[6,1],
+                      S5_data[7,2],S5_data[8,2],S5_data[8,2],
+                      S5_data[9,3], S5_data[10,3],S5_data[10,3])
+C_data_split <- str_split_fixed(C_data, " ",3)
+C_data_coef <- parse_number(C_data_split[,1])
+C_data_coef[3] <-C_data_coef[1]+C_data_coef[3]
+C_data_coef[6] <-C_data_coef[4]+C_data_coef[6]
+C_data_coef[9] <-C_data_coef[7]+C_data_coef[9]
+C_data_SE <- parse_number(C_data_split[,2])
+C_data_SE[3] <-C_data_SE[1]+C_data_SE[3]
+C_data_SE[6] <-C_data_SE[4]+C_data_SE[6]
+C_data_SE[9] <-C_data_SE[7]+C_data_SE[9]
+values <- data.frame(Beta=100*(C_data_coef*1.24),
+               se=100*c(C_data_SE*1.24)*1.96,
+               Type=c("Broad","Broad","Broad","Neighboring","Neighboring","Neighboring","Distant","Distant","Distant"),
+               Domain=c("sigma_gamma_X","sigma_delta_X+","sigma(gammaX+deltaX+)","sigma_gamma_X","sigma_delta_X+","sigma(gammaX+deltaX+)","sigma_gamma_X","sigma_delta_X+","sigma(gammaX+deltaX+)"))
+
+values$Type<-factor(values$Type,levels=c("Broad","Neighboring","Distant"))
+values$Domain<-factor(values$Domain,levels = c("sigma_gamma_X","sigma_delta_X+","sigma(gammaX+deltaX+)"))
+
+pd = position_dodge(2)
+
+plot4<- ggplot(values, aes(
+    x = Type,
+    y = Beta,
+    color = factor(Domain)
+)) +
+    geom_errorbar(
+        aes(ymin = Beta-se,
+            ymax = Beta+se),
+        width = .2,
+        size = .7,
+        position = position_dodge(.5)
+    ) +
+    geom_point(shape = 15,
+               size = 3,
+               position = position_dodge(.5)) +
+    theme_bw() +
+    theme(
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.box = "horizontal",
+        panel.grid = element_blank(),
+        axis.title.y = element_text(vjust = 1.8),
+        axis.title.x = element_text(vjust = -0.5),
+        axis.title = element_text(face = "bold")
+    ) +
+    scale_color_manual(label=c("sigma_gamma_X","sigma_delta_X+","sigma(gammaX+deltaX+)"),values = c("light green", "red", "dark green")) +
+    geom_hline(yintercept=0, linetype="dashed", color = "black") +
+    ylab("Percent increase in citations associated with X")
+plot4
+```
+
+Figure 5 shows 4 plots analyzing the SA, CIP, and SACIP factors in the "Broad", "Neighboring", and "Distant" categories. The point estimates have a 95% confidence interval.
+
+Plot 1 finds annual growth rate likelihood of research having cross domain characteristics. Varying from 0% to 4% growth rate, the likelihood of SA&CIP papers increase the most in "broad" and "distant papers and SA papers have a slightly higher growth rate likelihood in "neighboring" categories.
+
+Plot 2 shows the decreased probable likelihood of having cross-domain characteristics from 2014 onward. It appears there is a much more prominent decrease in CIP as well as SA&CIP papers after 2014.
+
+Plot 3 analyzes the percent increase in citations relative to mono-domain research articles. Papers that are SA&CIP together show the strongest percentage increase of citations relative to mono domain papers in all 3 categories of "broad", "neighboring", and "distant".
+
+Plot 4 displays the Difference-in-Difference of the Flagship project effect on impact on citations when a paper is cross-domain research. For "broad" and "neighboring" categories, having an SA paper appeared to give the highest diffence-on-difference citation impact for cross-domain research. CIP published data on the other hand appeared to give a decreased impact on the citation impact of cross domain research.
+
+
+
